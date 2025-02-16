@@ -6,9 +6,9 @@ import numpy as np
 
 def train_model(df_monthly):
     """
-    Навчання моделі для прогнозування.
-    :param df_monthly: DataFrame з даними про продажі
-    :return: Навчена модель, середня помилка
+     Training a model for forecasting.
+    : param df_monthly: Dataframe with sales data
+    : Return: Learned Model, Average Error
     """
     X = df_monthly[['Month_Number']]
     y = df_monthly[['Total_Sales']]
@@ -21,11 +21,11 @@ def train_model(df_monthly):
 
 def forecast_future_sales(model, df_monthly, months=6):
     """
-    Прогнозує продажі на майбутні місяці.
-    :param model: Навчена модель
-    :param df_monthly: DataFrame із даними про продажі
-    :param months: Кількість місяців для прогнозу
-    :return: DataFrame з майбутніми прогнозами
+     Predicts sales for the coming months.
+    : Param Model: Trained Model
+    : param df_monthly: Dataframe with sales data
+    : Param Months: The number of months for the forecast
+    : Return: Dataframe with future forecasts
     """
     last_date = df_monthly.index[-1]
     future_dates = pd.date_range(start=last_date + pd.DateOffset(months=1), periods=months, freq='M')
